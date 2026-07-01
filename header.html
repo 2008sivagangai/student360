@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student 360 Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        <i class="fas fa-user-graduate"></i>
+        <h2>Student 360</h2>
+    </div>
+
+    <ul>
+
+        <li onclick="showPage('dashboard')" class="active">
+            <i class="fas fa-home"></i>
+            Dashboard
+        </li>
+
+        <li onclick="showPage('students')">
+            <i class="fas fa-users"></i>
+            Student Details
+        </li>
+
+        <li onclick="showPage('attendance')">
+            <i class="fas fa-calendar-check"></i>
+            Attendance
+        </li>
+
+        <li onclick="showPage('marks')">
+            <i class="fas fa-chart-bar"></i>
+            Marks
+        </li>
+
+        <li onclick="showPage('exams')">
+            <i class="fas fa-file-alt"></i>
+            Exams
+        </li>
+
+        <li onclick="showPage('announcement')">
+            <i class="fas fa-bullhorn"></i>
+            Announcement
+        </li>
+
+        <li onclick="showPage('profile')">
+            <i class="fas fa-user-circle"></i>
+            Profile
+        </li>
+
+        <li onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+<div class="topbar">
+
+<h2>Dashboard</h2>
+
+<div class="admin">
+
+<i class="fas fa-user-shield"></i>
+
+Admin
+
+</div>
+
+</div>
+
+<!-- ================= DASHBOARD ================= -->
+
+<div id="dashboard" class="page">
+
+<div class="cards">
+
+<div class="card blue">
+
+<h4>Total Students</h4>
+
+<h1>120</h1>
+
+</div>
+
+<div class="card green">
+
+<h4>Total Teachers</h4>
+
+<h1>15</h1>
+
+</div>
+
+<div class="card yellow">
+
+<h4>Attendance</h4>
+
+<h1>85%</h1>
+
+</div>
+
+<div class="card pink">
+
+<h4>Exams</h4>
+
+<h1>08</h1>
+
+</div>
+
+</div>
+
+<div class="dashboard-grid">
+
+<div class="box">
+
+<h3>Recent Students</h3>
+
+<table>
+
+<tr>
+
+<th>Name</th>
+<th>Department</th>
+
+</tr>
+
+<tr>
+
+<td>Arun</td>
+<td>CSE</td>
+
+</tr>
+
+<tr>
+
+<td>Priya</td>
+<td>ECE</td>
+
+</tr>
+
+<tr>
+
+<td>Rahul</td>
+<td>IT</td>
+
+</tr>
+
+<tr>
+
+<td>Divya</td>
+<td>EEE</td>
+
+</tr>
+
+<tr>
+
+<td>Karthik</td>
+<td>CSE</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="box">
+
+<h3>Attendance Overview</h3>
+
+<div class="circle">
+
+85%
+
+</div>
+
+<p><b>Present :</b> 85%</p>
+
+<p><b>Absent :</b> 15%</p>
+
+</div>
+
+</div>
+
+<div class="cards">
+
+<div class="card purple">
+
+<h4>Marks Average</h4>
+
+<h2>78 / 100</h2>
+
+</div>
+
+<div class="card lightgreen">
+
+<h4>CGPA</h4>
+
+<h2>8.52</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= STUDENT DETAILS ================= -->
+
+<div id="students" class="page" style="display:none;">
+
+<h2>Student Details</h2>
+
+<div class="toolbar">
+
+<button class="btn">
++ Add Student
+</button>
+
+<input
+type="text"
+class="search"
+placeholder="Search Student">
+
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Register No</th>
+
+<th>Name</th>
+
+<th>Department</th>
+
+<th>Year</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="studentTable">
+    </tbody>
+
+</table>
+
+</div>
+
+<!-- ================= ATTENDANCE ================= -->
+
+<div id="attendance" class="page" style="display:none;">
+
+<h2>Attendance</h2>
+
+<div class="toolbar">
+
+<input type="date" class="search">
+
+<select class="search">
+
+<option>CSE</option>
+<option>ECE</option>
+<option>EEE</option>
+<option>IT</option>
+
+</select>
+
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Register No</th>
+<th>Name</th>
+<th>Department</th>
+<th>Year</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody id="attendanceTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- ================= MARKS ================= -->
+
+<div id="marks" class="page" style="display:none;">
+
+<h2>Student Marks</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Register No</th>
+<th>Name</th>
+<th>Department</th>
+<th>Java</th>
+<th>Python</th>
+<th>DBMS</th>
+<th>Total</th>
+
+</tr>
+
+</thead>
+
+<tbody id="marksTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- ================= EXAMS ================= -->
+
+<div id="exams" class="page" style="display:none;">
+
+<h2>Exam Schedule</h2>
+
+<table>
+
+<tr>
+
+<th>Exam</th>
+<th>Date</th>
+<th>Time</th>
+
+</tr>
+
+<tr>
+
+<td>Java</td>
+<td>10-07-2026</td>
+<td>10.00 AM</td>
+
+</tr>
+
+<tr>
+
+<td>Python</td>
+<td>12-07-2026</td>
+<td>10.00 AM</td>
+
+</tr>
+
+<tr>
+
+<td>DBMS</td>
+<td>15-07-2026</td>
+<td>10.00 AM</td>
+
+</tr>
+
+<tr>
+
+<td>Web Technology</td>
+<td>18-07-2026</td>
+<td>10.00 AM</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- ================= ANNOUNCEMENT ================= -->
+
+<div id="announcement" class="page" style="display:none;">
+
+<h2>Announcements</h2>
+
+<div class="box">
+
+<h3>📢 College Circular</h3>
+
+<p>
+
+Semester Examination starts from
+
+<b>10 July 2026</b>
+
+</p>
+
+<hr><br>
+
+<h3>📢 Placement Training</h3>
+
+<p>
+
+Placement Training begins on
+
+<b>25 June 2026</b>
+
+</p>
+
+<hr><br>
+
+<h3>📢 Holiday</h3>
+
+<p>
+
+College Holiday on
+
+<b>05 July 2026</b>
+
+</p>
+
+</div>
+
+</div>
+
+<!-- ================= PROFILE ================= -->
+
+<div id="profile" class="page" style="display:none;">
+
+<h2>Student Profile</h2>
+
+<div class="profile-card">
+
+<h3 id="profileName">Student Name</h3>
+
+<p>
+
+<b>Department :</b>
+
+<span id="profileDept"></span>
+
+</p>
+
+<p>
+
+<b>Email :</b>
+
+<span id="profileEmail"></span>
+
+</p>
+
+<p>
+
+<b>Register No :</b>
+
+<span id="profileReg"></span>
+
+</p>
+
+<p>
+
+<b>Phone :</b>
+
+<span id="profilePhone"></span>
+
+</p>
+
+<p>
+
+<b>Year :</b>
+
+<span id="profileYear"></span>
+
+</p>
+
+<button class="btn" onclick="logout()">
+
+Logout
+
+</button>
+
+</div>
+
+</div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<div class="footer">
+    <p>© 2026 Student 360 Management System | Developed by Gangai</p>
+</div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
